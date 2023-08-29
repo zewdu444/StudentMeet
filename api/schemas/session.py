@@ -5,12 +5,12 @@ import datetime
 from .user import User
 
 class Status(str, Enum):
-     created  = "created"
-     pending  = "pending"
-     closed  = "closed"
+     created = "created"
+     pending = "pending"
+     cancel = "cancel"
+     closed = "closed"
 
 class SessionCreate(BaseModel):
-    created_by_teacher: int = Field(..., example=1)
     session_start: datetime.datetime = Field(..., example="2021-08-01 12:00:00")
     session_end: datetime.datetime = Field(..., example="2021-08-01 13:00:00")
     session_description: str = Field(..., example="This is a session")
