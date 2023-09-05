@@ -13,17 +13,20 @@ class Status(str, Enum):
 class SessionCreate(BaseModel):
     session_start: datetime.datetime = Field(..., example="2021-08-01 12:00:00")
     session_end: datetime.datetime = Field(..., example="2021-08-01 13:00:00")
+    booked_by_student: Optional[int] = Field(None, example=1)
     session_description: str = Field(..., example="This is a session")
 
 class SessionUpdate(BaseModel):
     session_start: Optional[datetime.datetime] = Field(None, example="2021-08-01 12:00:00")
     session_end: Optional[datetime.datetime] = Field(None, example="2021-08-01 13:00:00")
     session_description: Optional[str] = Field(None, example="This is a session")
+    booked_by_student: Optional[int] = Field(None, example=1)
     status: Optional[Status] = Field(None, example="created")
 
 class Session(BaseModel):
     session_id: int = Field(..., example=1)
     created_by_teacher: User
+    booked_by_student: Optional[User]
     session_start: datetime.datetime = Field(..., example="2021-08-01 12:00:00")
     session_end: datetime.datetime = Field(..., example="2021-08-01 13:00:00")
     session_description: str = Field(..., example="This is a session")

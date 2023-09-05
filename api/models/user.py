@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship
 from database import Base
 import datetime
 from .session import Sessions
-from .session_booking import Session_bookings
 class Users(Base):
     __tablename__ = "users"
     university_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
@@ -13,4 +12,4 @@ class Users(Base):
     role  = Column(String)
     hashed_password = Column(String)
     sessions_created = relationship("Sessions", back_populates="created_by")
-    session_bookings = relationship("Session_bookings", back_populates="booked_by")
+    session_bookings = relationship("Sessions", back_populates="booked_by")
