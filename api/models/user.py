@@ -11,5 +11,5 @@ class Users(Base):
     email = Column(String, unique=True, index=True)
     role  = Column(String)
     hashed_password = Column(String)
-    sessions_created = relationship("Sessions", back_populates="created_by")
-    session_bookings = relationship("Sessions", back_populates="booked_by")
+    sessions_created = relationship("Sessions", back_populates="created_by", foreign_keys=[Sessions.created_by_teacher])
+    session_bookings = relationship("Sessions", back_populates="booked_by", foreign_keys=[Sessions.booked_by_student])
